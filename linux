@@ -1,0 +1,346 @@
+Linux -> An operating System
+	Features Of Linux :
+		Free
+		Open Source
+		Full Access of Hardware
+		Easily Customizable
+Distribution : 	Redhat , -> Paid
+		Centos, 
+		Debian -KAli ,parrot
+		Arch -> Black Arch, Garuda
+Some Distribution Of Linux Is Paid
+	Paid Linux :-> Redhat, Zorin OS
+
+Objective To Study Linux : 
+	Already Installed Tools
+	Victim Machine can be a linux Based OS
+What we Study in Linux : 
+	Linux Administration 
+		Users 
+		Powers
+		Tools
+		Permissions
+		Security
+Kernal -> It is the mediator b/w Hardware and OS
+
+Virtual Consoles :
+	(tty-> teletype): There are 6 virtual Consoles
+		Cli Interface 
+		Shifting B/W the consoles : 
+			console 1 -> ctrl + alt + f1
+			console 2 -> ctrl + alt + f2
+			upto console 7
+		Login Screen working on 1st console
+		then after the login i send you on 7th
+		or 2nd
+In the Terminal(pts) : 	
+	┌──(kali㉿kali)-[~]
+	└─$ 
+	kali 	-> Username
+	㉿ 	-> Seperator
+	kali	-> Hostname 
+	~	-> Users Home Directory
+	[~]	-> Show Present Working Directory
+		   inside the []
+	$	-> Shows that user is a regular User
+	#	-> Show that user is root user 
+Command : it have three parts
+	command options arguments
+Common Commands : 
+	w 	-> shows logged in user information
+	whoami 	-> print username 
+	echo 	-> print 
+	touch 	-> create a file
+	cat 	-> print content of the file
+		-n -> 	print line number
+	head 	-> print top 10 lines by default
+		-n ->	define number of lines
+	tail 	-> print last 10 lines by default
+		-n ->	define number of lines
+	more 	-> open a viewer in terminal
+	less	-> open a viewer in terminal
+	wc 	-> count words,lines, char of a file
+		-l -> print number of lines
+		-w -> print number of words
+		-c -> print number of characters
+	ls 	-> list the files and Directory
+		-a -> list hidden files and directory
+		(hidden files ->file dir start with .)
+		-l -> long list : list details 
+		-R -> Recursively : list all dir 
+		      and files with their
+		      subdirectory
+Files Management : 
+	/	-> Root Directorywhole operating
+		   System installed here	
+	/bin	-> normal commads
+	/boot	-> system boot related files
+	/dev	-> devices files like drives
+	/etc	-> all configuration related files
+	/home	-> all users home directory are here
+	/root	-> root's user home directory
+	/run	-> ram working files
+	/sbin	-> commands only superuser can run
+	/tmp	-> temporary files and work area
+	/usr 	-> services libraries 
+	/var	-> logs and tmp directory
+
+	Two Types Of Path : 
+	1. Absolute Path -> / to destination folder
+	        Example :                                           
+		┌──(kali㉿kali)-[~]
+		└─$ cd /home/kali/Document
+	
+	2. Relative Path -> present working directory to destination
+	        Example :                                           
+		┌──(kali㉿kali)-[~]
+		└─$ cd Document
+	
+Commands : 
+	cd 	-> Change directory
+	cd 	-> send to home directory
+	cd . 	-> (.)  means present working Directory
+	cd .. 	-> (..) means Parent  Directory
+	cd -	-> (-) means previous working Directory
+	mkdir 	-> make directory
+		-p -> make subdirectory also
+	rmdir 	-> remove blank directory
+	rm 	-> remove file
+		-r -> recursive
+		Example : rm -rf dir_name -> remove filled directory
+		-f -> forcefully
+	cp 	-> copy  
+		Usuage : cp source destination
+		-r -> recursive --> To copy directory
+	mv 	-> move and rename 
+		Usuage : mv source destination
+
+Links :
+	1. Hardlink -> It is a duplicate copy of a file with auto update file  
+	Command  : 
+		ln  file.txt hardlink.txt
+	2. Softlink -> It is a shortcut of the file
+	Command :
+		ln -s file.txt softlink.txt
+
+Variables : value container
+	Temporary -> can be make in terminal 
+		can not available outside that terminal
+		variable will be delete if terminal is closed
+		Example : a=192.168.1.1
+	Permanent -> It will work on all the terminals
+		It is also available after reboot the machine
+		Process : 
+			->open the file .zshrc in editor in home dir
+			->and add "export a=192.168.1.5"
+			->and save the file
+	$ -> Place before the variable name to Access The variable
+Alias -> make long commands into short words 
+	Temporary : 
+	Example : alias l="ls -lh /home"
+	Permanent : 
+		Process : 
+			->open the file .zshrc in editor in home dir
+			->and add alias l="ls -lh /home"
+			->and save the file
+
+
+
+File Editors 
+	nano 
+		ctrl+x -> exit
+		ctrl+o -> write
+	vim 
+		i -> insert mode
+		esc -> escape mode
+		u-> undo
+		ctrl+r -> redo
+		dd -> delete a single line
+		x -> delete a character
+		/ -> to search a string
+		:wq-> write and quit
+		:q -> quit withot saving
+		! -> over ride 
+	
+		
+
+	
+
+
+Users -> 
+	1. Super User 	-> root		0	
+	2. System User 	-> serivces 	1-999
+	3. Regular User	-> normal user  1000+
+Command : 
+	cat /etc/passwd 	-> show users and info
+	useradd/adduser	-> add a user
+	usermod	-> modify in user
+		-s -> shell
+		-c -> comment or description
+		-aG -> append user in group
+		-L -> Lock the user
+		-U -> Unlock the user
+	userdel		-> delete a user
+		-r -> to delete user's all files also
+	passwd -> to give the password
+
+Groups
+	1. Primary Group
+	2. Supplementry Group
+	
+addgroup group_name
+
+useradd kali
+
+user group primary
+kali	kali
+
+
+ User Power :
+ su -> switch user
+ sudo -> superuser do 
+ 
+File Permissions :
+ Symbolic Form  :
+   user  group others
+   
+ - - - - - - - - - - 
+ d r w x r w x r w x
+ l -> softlink
+ - -> regular file
+ 
+ r -> read
+ w -> write
+ x -> execute
+ 
+ chmod u/g/o +/-/ = r/w/x
+ 
+ Numerical Form 
+ r -> read	-> 4
+ w -> write	-> 2
+ x -> execute	-> 1
+ no Permissions	-> 0
+ 	ugo
+ chmod  720 lin
+ u = r w x
+     4+2+1 =7
+
+Special Permissions
+ 					Symbols	Numbers
+ SUID		Users	Files		S	4
+					s=S+x
+ 
+ SGID		Group	Files Directory	S	2		
+					s=S+x
+
+ STICKY Bit	Other	Directory	T	1
+					t=T+x
+					4777
+Configuring SSH
+
+ SSH -> Secure shell -> to work in  device remotly
+	sudo systemctl start ssh.service
+	ssh user@ip/hostname -p port_number
+	Default Number : 22
+	Total Virtual Ports : 65536
+	Authentication Types : 
+		Password Based Authentication 
+		Key based Authentication
+		Commands : 
+			ssh-keygen
+			ssh-copy-id -i pub_key user@IP/host
+		
+Tar -> To make zip and unzip the files and directory
+	-c -> create
+	-f -> file
+	-x -> extract 
+	-t -> list the name of files/directory
+	Compression :
+		-z -> gzip
+		-j -> bzip2
+		-J -> xz
+ Command :
+ 	Locate -> to search the files and directory in the system
+ 
+ Services  :
+ 	Services units 
+ 		1. service 
+ 		2. socket
+ 		3. path
+ 		ssh.service
+ 		ssh.socket
+ 	Command : 
+ 	Systemctl
+ 	OPtions ->
+ 		list-units
+ 		list-units --type=service
+ 		status service_name 
+ 		start
+ 		stop
+ 		restart
+ 		reload
+ 		reload-or-restart
+ 		enable 
+ 		disable
+ 		is-active
+		is-failed
+		is-enable
+		
+ Network Management
+ 	Command -> nmcli
+ 	nmcli dev status
+ 	nmcli con show
+ 	nmcli dev show
+ 	nmcli con up connection_name
+ 	nmcli add 
+ 	con-name connection_name 
+ 	ifname interface_name eth0 
+ 	type ethernet 
+ 	ipv4.address 192.168.1.45 , ipv6.address
+ 	
+ Package Manager
+ 	Redhat -> yum
+ 	arch   -> pacman
+ 	debian -> apt	
+ 		sudo apt 
+ 		-> update
+ 		-> upgrade
+ 		-> dist-upgrade 
+ 		-> install package-name 
+ 		-> remove  package-name
+ 		-> purge   package-name
+ 		-> autoremove
+ 		-> --fix-missing 
+ 		
+ Operators : 
+ 	Standard input 	-> 0
+ 	Standard output	-> 1
+ 	Standard Error 	-> 2
+ 	> 	-> redirection
+ 	>> 	-> redirection with append
+ 	<	-> opposite redirection
+ 	&&	-> and operator both side command will be execute 2nd command does not if first fail
+ 	;	-> line termination give multiple command in single line
+ 	&	-> send command in background
+ 	||	-> or operator -> does not depend on first command 
+ 	| 	-> PIPE convert output to input of 2nd command
+ 
+ 
+ Processess 
+ 	ps -> 
+ 	ps aux -> all processes
+ 	
+ locate -> to search files
+  	-i	-> ignore case sensitivity
+ 
+ find  	-> to find files in real time
+ 	-size 		-> on the basis of size
+ 	-perm		-> on the basis of PERMISSION
+ 	-readable	-> on the basis of permission read
+ 	-writable	-> on the basis of permission write
+ 	-executable	-> -> on the basis of permission execute
+ 	-iname		-> ignore case sensitivity
+ 	-name		-> define name
+ 	-user		-> on the basis of user owner
+ 	-group		-> on the basis of group owner
+ 	-mmin		-> on the basis of modification time
